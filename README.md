@@ -1,6 +1,6 @@
 ![](man/figures/shiny-logo1.png)
 
-[![test-coverage](https://github.com/aicplane/Linkage/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/aicplane/Linkage/actions/workflows/test-coverage.yaml) [![pkgdown](https://github.com/aicplane/Linkage/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/aicplane/Linkage/actions/workflows/pkgdown.yaml) [![](https://img.shields.io/badge/shiny-linkage-green.svg)](https://xulabgdpu.org.cn/linkage/) [![](https://img.shields.io/badge/doi-10.1101/2024.04.24.590756-green.svg)](https://doi.org/10.1101/2024.04.24.590756) [![](https://img.shields.io/badge/devel%20version-1.2.0-green.svg)](https://github.com/linkage)
+[![](https://img.shields.io/badge/shiny-linkage-green.svg)](https://xulabgdpu.org.cn/linkage/) [![](https://img.shields.io/badge/doi-10.1101/2024.04.24.590756-green.svg)](https://doi.org/10.1101/2024.04.24.590756) [![](https://img.shields.io/badge/devel%20version-1.2.0-green.svg)](https://github.com/linkage)
 
 <img src="man/figures/imgfile.png" align="right" height="200" style="float:right; height:200px;"/>
 
