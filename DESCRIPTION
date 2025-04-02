@@ -1,0 +1,75 @@
+Package: Linkage
+Type: Package
+Title: An R Package for Linking of ATAC-Seq to Gene Expression Data
+Version: 1.2.0
+Authors@R: 
+    person(given = "Zenghui",
+         family = "Liu",
+         role = c("aut", "cre"),
+         comment = c(ORCID = "0009-0003-5676-4237"),
+         email = "2470587020@qq.com")
+Maintainer: Siwen Xu<siwxu@gdpu.edu.cn>
+Description:  Linkage is a user-friendly, interactive, open-source R package for exploring and visualizing potential gene cis-regulatory elements (CREs) based on ATAC-seq and RNA-seq data. Users can input customized data, then obtain genome-wide CREs with this toolkit. All the CREs are predicted from multi-omics sequencing data, rather than being experimentally determined. The main feature for Linkage is to identify potential CREs for the whole genome by performing canonical correlation analysis between each quantitative chromatin accessibility measure and the quantitative expression level across all samples. Additional functions are developed to allow users to perform more systematic and deeper analysis for the gene regulatory landscape.
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.3.1
+Imports:
+    ggupset,
+    ggplot2,
+    ggpubr,
+    ggpmisc,    
+    dplyr,
+    Biostrings,
+    igraph,
+    tidyverse,
+    visNetwork,
+    stringr,
+    clusterProfiler,
+    enrichplot,
+    plotly,
+    wordcloud2,
+    fresh,
+    magrittr,
+    cowplot,
+    tidyr,
+    methods,
+    utils,
+    rpart,
+    UpSetR,
+    BiocManager,   
+    ggplotify,
+    tibble,
+    wordcloud,
+    IRanges,
+    Gviz,
+    TxDb.Hsapiens.UCSC.hg38.knownGene,
+    TxDb.Mmusculus.UCSC.mm10.knownGene, 
+    org.Hs.eg.db, 
+    org.Mm.eg.db,
+    BSgenome.Hsapiens.UCSC.hg38,
+    BSgenome.Mmusculus.UCSC.mm10, 
+    TFBSTools,
+    motifmatchr,
+    GenomeInfoDb,
+    GenomicRanges,
+    ChIPseeker
+Suggests:
+    shiny,
+    shinyjs,
+    shinydashboard,
+    shinydashboardPlus,
+    shinycssloaders,
+    shinyWidgets,
+    shinyBS,
+    RColorBrewer,
+    rvest,
+    data.table,
+    DT,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Depends: R (>= 4.3)
+URL: https://aicplane.github.io/Linkage
+LazyData: true
+VignetteBuilder: knitr
+ByteCompile: true
