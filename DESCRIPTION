@@ -3,11 +3,10 @@ Type: Package
 Title: An R Package for Linking of ATAC-Seq to Gene Expression Data
 Version: 1.2.0
 Authors@R: 
-    person(given = "Zenghui",
-         family = "Liu",
+    person(given = "Yuyan",
+         family = "Luo",
          role = c("aut", "cre"),
-         comment = c(ORCID = "0009-0003-5676-4237"),
-         email = "2470587020@qq.com")
+         email = "1620218029@qq.com")
 Maintainer: Siwen Xu<siwxu@gdpu.edu.cn>
 Description:  Linkage is a user-friendly, interactive, open-source R package for exploring and visualizing potential gene cis-regulatory elements (CREs) based on ATAC-seq and RNA-seq data. Users can input customized data, then obtain genome-wide CREs with this toolkit. All the CREs are predicted from multi-omics sequencing data, rather than being experimentally determined. The main feature for Linkage is to identify potential CREs for the whole genome by performing canonical correlation analysis between each quantitative chromatin accessibility measure and the quantitative expression level across all samples. Additional functions are developed to allow users to perform more systematic and deeper analysis for the gene regulatory landscape.
 License: MIT + file LICENSE
@@ -69,7 +68,6 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 Depends: R (>= 4.3)
-URL: https://aicplane.github.io/Linkage
 LazyData: true
 VignetteBuilder: knitr
 ByteCompile: true
