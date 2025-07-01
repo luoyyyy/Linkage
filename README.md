@@ -12,26 +12,26 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application fo
 ## Insallation
 
 ### 1. Download Linkage Source Code
-  + Download Linkage from the [Linkage](https://github.com/luoyyyy/Linkage).
+  + Download Linkage from the [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).
 
-    OR
+    Or
   + ```r
     git clone https://github.com/luoyyyy/Linkage.git
     ```
 ### 2. Install Required R Packages
-  + Open the R environment or R GUI of your choice and run the following code to install the required R packages ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ):
+  + Open the R environment or R GUI of your choice and run the following code to install the required R packages ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ) :
     ```r
     install.packages(c("Seurat","shiny","shinyBS","ggplot2","clusterProfiler","BSgenome.Hsapiens.UCSC.hg38","DT"))
     ```
   + Alternatively, the project environment required for Linkage can be reproduced using the renv.lock, .Rprofile and activate.R files.
 
-    Create a project and run the following command in the project directory:
+    Create a project and run the following command in the project directory :
 
     ```r
     install.package("renv")
     renv::init()
     ```
-    After running the command, you will see the following directory structure:
+    After running the command, you will see the following directory structure :
     ```bash
     |- renv/
     |- renv.lock
