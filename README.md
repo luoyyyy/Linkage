@@ -19,32 +19,42 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application fo
     git clone https://github.com/luoyyyy/Linkage.git
     ```
 ### 2. Install Required R Packages
-  + Open the R environment or R GUI of your choice and run the following code to install the required R packages ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ):
+  + **Method 1**: Open the R environment or R GUI of your choice and run the following code to install the required R packages. ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ):
     ```r
     install.packages(c("Seurat","shiny","shinyBS","ggplot2","clusterProfiler","BSgenome.Hsapiens.UCSC.hg38","DT"))
     ```
-  + Alternatively, the project environment required for Linkage can be reproduced using the renv.lock, .Rprofile and activate.R files.
+    After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
+    ```bash
+    |- www/
+    |- extdata/
+    |- ui.R
+    |- server.R
+    |- global.R
+    ```
+    Or
 
-    Create a project and run the following command in the project directory:
+  + **Method 2**: The project environment required for Linkage can be reproduced using the renv.lock, .Rprofile and activate.R files.  
+  Create a project and run the following command in the project directory:  
 
     ```r
-    install.package("renv")
-    renv::init()
-    ```
-    After running the command, you will see the following directory structure:
+      install.package("renv")
+      renv::init()
+    ```  
+    After running the command, you will see the following directory   structure:
+      ```bash
+      |- renv/
+      |- renv.lock
+      |- .Rprofile
+      ```
+      Replace the renv.lock and .Rprofile files in your current directory with the versions provided in the GitHub repository, then run the following command to restore the project environment.
+     ```r
+      renv::restore()
+     ```
+      During the execution of the above command, the process may be interrupted due to failure in downloading certain packages. you can manually install the failed packages and then re-run "renv::restore()" to continue restoring the environment.
+      
+      After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. 
     ```bash
-    |- renv/
-    |- renv.lock
-    |- .Rprofile
-    ```
-    Replace the renv.lock and .Rprofile files in your current directory with the versions provided in the GitHub repository, then run the following command to restore the project environment.
-    ```r
-    renv::restore()
-    ```
-    During the execution of the above command, the process may be interrupted due to failure in downloading certain packages. you can manually install the failed packages and then re-run "renv::restore()" to continue restoring the environment.
-### 3. Running Linkage
-  + After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should now look like this:
-    ```bash
+    ##Method 2:
     |- renv/
     |- renv.lock
     |- .Rprofile
@@ -54,16 +64,15 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application fo
     |- server.R
     |- global.R
     ```
-    If all files are located in the ~/Linkage directory (e.g., your current working directory is ~/), run the following command:
+### 3. Running Linkage
+  + If all files are located in the ~/Linkage directory (e.g., your current working directory is ~/), run the following command:
+      ```r
+         shiny::runApp("Linkage")
+      ```
+      Or
 
-    ```r
-    shiny::runApp("Linkage")
-    ```
-    Or, change to that directory and run:
-    ```r
-    shiny::runApp(".")
-    ```
-
-
-
+  + Change to that directory and run:
+      ```r
+        shiny::runApp(".")
+     ```
 
