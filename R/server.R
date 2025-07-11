@@ -239,6 +239,92 @@ server <- function(input, output, session) {
         "ENTREZ" = updateTextInput(session, "geneid",
                                    value = "8813")
       )
+      updateTextAreaInput(session,
+                          inputId = "gene_list",
+                          value = "PGF
+CTSB
+EDN1
+                                    ")
+      updateTextAreaInput(session,
+                          inputId = "gene_list_six",
+                          value =  "PGF
+CTSB
+EDN1
+DKK1
+FGF1
+SPX
+SERPINE2
+IL15
+IL2
+PLAU
+IGF1
+IGFBP4
+SPP1
+SEMA3F
+ANG
+ANG
+ANG
+C3
+BMP6
+FGF2
+PAPPA
+IL18
+ANGPT1
+CCL20
+VEGFC
+TNF
+IGFBP7
+PLAT
+CCL1
+CCL1
+IL6
+CXCL12
+VEGFA
+CCL7
+IL10
+EREG
+IL7
+MIF
+CXCL10
+NRG1
+CD55
+CD55
+IL13
+ANG
+ANG
+CSF1
+ANGPTL4
+CSF2
+GDF15
+CCL8
+WNT16
+HGF
+TIMP2
+ESM1
+MMP2
+IGFBP6
+MMP3
+CCL4
+MMP1
+MMP1
+IL1A
+IGFBP2
+IL1B
+MMP12
+CCL24
+CXCL16
+MMP13
+IGFBP1
+SERPINE1
+IGFBP3
+FGF7
+CCL3L1
+IGFBP5
+INHA
+BMP2
+VGF
+CCL3
+MMP9")
     }
     if (input$Species == "2") {
       if (is.null(input$geneid_method)) {
@@ -253,6 +339,19 @@ server <- function(input, output, session) {
         "ENTREZ" = updateTextInput(session, "geneid",
                                    value = "224530")
       )
+      updateTextAreaInput(session,
+                          inputId = "gene_list",
+                          value = "Sox2
+Sox2ot
+Sox11
+                                    ")
+      updateTextAreaInput(session,
+                          inputId = "gene_list_six",
+                          value = "Sox2
+Sox2ot
+Sox11
+                                    ")
+      
     }
   })
   
@@ -384,6 +483,14 @@ server <- function(input, output, session) {
           if (nrow(merge_df) > 0) {
             break
           }
+          if (nrow(merge_df)==0) {
+            sendSweetAlert(
+              session = session,
+                title = "WARNING",
+              text = "The selected species does not match the species of the current dataset. Please ensure species consistency to avoid analysis errors.",
+              type = "error"
+            )
+          }
         }, error = function(e) {
           print(e)
         })
@@ -441,7 +548,22 @@ server <- function(input, output, session) {
         });
       '
       shinyjs::runjs(js.1)
-      
+      shinyjs::enable(selector = ".sidebar li a[data-value='five']")
+      shinyjs::enable(selector = ".sidebar li a[data-value='six']")
+      js.5 <- '
+        $(document).ready(function(){
+          // 获取菜单2的禁用状态
+            $("a[data-value=five]").css("color", "#E6E7E8");
+        });
+      '
+      shinyjs::runjs(js.5)
+      js.6 <- '
+        $(document).ready(function(){
+          // 获取菜单2的禁用状态
+            $("a[data-value=six]").css("color", "#E6E7E8");
+        });
+      '
+      shinyjs::runjs(js.6)
       updateTabItems(session, "inTabset", selected = "one")
     }
   })
@@ -646,6 +768,7 @@ server <- function(input, output, session) {
       shinyjs::runjs(js.6)
     }
   })
+ 
   
   
   # 模块一 --------------------------------------------------------
@@ -819,9 +942,20 @@ server <- function(input, output, session) {
   
   
   observe({
+    target_name<-"rho"
     if (is.null(select_ATAC())) {
       output$ATAC <- DT::renderDataTable(NULL)
-    } else{
+      
+    }
+    if(!is.null(select_ATAC())&&nrow(select_ATAC())==0&&!(target_name%in%colnames(select_ATAC()))){
+      sendSweetAlert(
+        session = session,
+        title = "Warning",
+        text = "The target gene could not be found in the current ATAC-seq dataset. Please verify the gene name for accuracy, and ensure that the ATAC-seq and RNA-seq datasets are matched appropriately.",
+        type = "error"
+      )
+    }
+    if(!is.null(select_ATAC())&&nrow(select_ATAC())!=0&&target_name%in%colnames(select_ATAC())){
       output$ATAC <-
         DT::renderDataTable({
           df <- select_ATAC()[, c(-4:-(ncol(select_ATAC()) - 3))]
@@ -1008,7 +1142,7 @@ server <- function(input, output, session) {
       )
       
       if(input$data == "1"){
-        peakAnno <<- readRDS("peakAnno.rds")
+        peakAnno <<- readRDS("extdata/peakAnno.rds")
       }
       # if(input$data == "2"){
       #   peakAnno <<- readRDS("/srv/shiny-server/linkage/extdata/mus_peakAnno.rds")
@@ -1043,7 +1177,9 @@ server <- function(input, output, session) {
       )
       
       
-      p <- ChIPseeker::upsetplot(peakAnno, vennpie = TRUE)
+      # p <- ChIPseeker::upsetplot(peakAnno, vennpie = TRUE)
+      p <- upsetplot_y(peakAnno, vennpie = TRUE)
+    
       
       output$Peak_Annotation <-
         DT::renderDataTable(
@@ -1148,7 +1284,19 @@ server <- function(input, output, session) {
       select_ATAC()[, c(-(ncol(select_ATAC()) - 2):-ncol(select_ATAC()))]
     select_peak <- req(input$ATAC3_rows_selected)
     Species <- input$Species
-    return(motif_analysis(peakfile, select_peak, Species))
+    # return(motif_analysis(peakfile, select_peak, Species))
+    # print(nrow(motif_1))
+    RNA_expr<-RNA_count()
+    RNA_expr$expr_avg<-rowMeans(RNA_expr[,6:ncol(RNA_expr)],na.rm = TRUE)
+    RNA_exp<-data.frame(
+      "external_gene_name"=RNA_expr$external_gene_name,
+      "expr_avg"=RNA_expr$expr_avg)
+    expr<-merge(motif_analysis(peakfile, select_peak, Species),RNA_exp,by.x = "name",by.y = "external_gene_name",all.x = TRUE)
+    cols <- names(expr)
+    # 排除 name，然后把它插入到第2位
+    new_order <- append(setdiff(cols, "name"), "name", after = 1)
+    expr <- expr[, new_order]
+    return(expr)
     
   })
   
@@ -1186,8 +1334,9 @@ server <- function(input, output, session) {
           autoWidth = F
         )
       ) %>%
-        formatStyle(names(df)[8],background=color_from_middle(brks1,'red','lightblue'))
-    })
+        formatStyle(names(df)[8],background=color_from_middle(brks1,'red','lightblue'))%>%
+        DT::formatRound(columns = c("score", "expr_avg"), digits = 3)
+      })
   # 输出seqlogo图
   output$displot5 <- renderPlot({
     select_seqlogo()
@@ -1328,6 +1477,7 @@ server <- function(input, output, session) {
         PFMatrixList <- readRDS("extdata/Mus.PFMatrixList.rds")
         pwm_library_dt <- readRDS("extdata/Mus.pwm_library_dt.rds")
         genome <- "mm10"
+      
       }
       for (i in 1:length(result_peak)) {
         if (input$filter_method == "FDR") {
@@ -1743,7 +1893,7 @@ server <- function(input, output, session) {
       }
       edges$color <-
         ifelse(edges$to %in% positive.TF, "#FF8C00", "lightgreen")
-      
+
       network <- visNetwork(nodes, edges) %>%
         visNodes(size = 10) %>% 
         visGroups(groupname = "Gene", color = "red") %>%
@@ -2120,7 +2270,7 @@ server <- function(input, output, session) {
               input$TF_cor_method,
               input$genelist_idtype2
             ),
-            quitButton = FALSE
+            quitButton =TRUE
           ) %>% withSpinner(color = "#3c8cbc")
         )
       })
@@ -2565,7 +2715,7 @@ server <- function(input, output, session) {
       })
       
       output$GO.upsetplot <- renderPlot({
-        upsetplot(go)
+        upsetplot(go)+ylab("Intersetion size")
       })
       
       output$GO.cnetplot <- renderPlot({
