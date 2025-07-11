@@ -1290,19 +1290,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "001.svg", style = "max-width:100%;height:auto;")
+              shiny::tags$img(src = "001.svg", style = "max-width:80%;height:auto;")
             ))
             
           )
@@ -1314,19 +1305,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "2.svg", style = " max-width:100%;height:auto;")
+              shiny::tags$img(src = "2.svg", style = " max-width:80%;height:auto;")
             ))
             
           )
@@ -1338,19 +1320,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "3.svg", style = "max-width:100%;height:auto;")
+              shiny::tags$img(src = "3.svg", style = "max-width:80%;height:auto;")
             ))
             
           )
@@ -1362,19 +1335,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "4.svg", style = "max-width:100%;height:auto;")
+              shiny::tags$img(src = "4.svg", style = "max-width:80%;height:auto;")
             ))
             
           )
@@ -1386,19 +1350,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "5.svg", style = "max-width:100%;height:auto;")
+              shiny::tags$img(src = "5.svg", style = "max-width:80%;height:auto;")
             ))
             
           )
@@ -1410,19 +1365,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "6.svg", style = "max-width:100%;height:auto;")
+              shiny::tags$img(src = "6.svg", style = "max-width:80%;height:auto;")
             ))
             
           )
@@ -1434,19 +1380,10 @@ MMP9",
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
-            # HTML(
-            #   paste0(
-            #     "</br><p style = ' font-size:17.5px; color: black;'>",
-            #     "The tutorial of Linkage and corresponding R package (LinkageR) are available at ","<a  href = 'https://aicplane.github.io/Linkage' target='_blank'>this</a>  "," website.",
-            #    # style = "font-size:17.5px;font-style:calibri;color:black;",
-            #     #align = "justify"
-            #     "</p>"
-            #   )
-            # )
             fluidRow(column(
               12,
               align = "center",
-              shiny::tags$img(src = "7.svg", style = "max-width:100%;height:auto;")
+              shiny::tags$img(src = "7.svg", style = "max-width:80%;height:auto;")
             ))
             
           )
@@ -1475,7 +1412,7 @@ MMP9",
               "</p>",
               "<br><p style = ' font-size:17.5px; color: black;'>",
               "<b>Code Availability</b>",
-              "<br>The source code for Linkage can be found in ","<a  href = 'https://github.com/aicplane/Linkage' target='_blank'>this</a>"," repository.",
+              "<br>The source code for Linkage can be found in ","<a  href = 'https://github.com/luoyyyy/Linkage' target='_blank'>this</a>"," repository.",
               "</p>",
               "<br><p style = ' font-size:17.5px; color: black;'> ",
               "<b>Cite Linkage</b>",
@@ -1497,7 +1434,7 @@ MMP9",
       HTML(paste0(
         "</br><p style = ' text-align: center;font-size:1.0em; color: black; line-height: 10%;'>",
         "<b>Created by</b>: XuLabGDPU | ",
-        "<b>Last update</b>: October 5, 2024",
+        "<b>Last update</b>: July 10, 2024",
         "</p>",
         "</br><p style = 'text-align: center; font-size:1.0em; color: black; line-height: 10%;'>",
         "<b>Address</b>: No. 280, Outer Ring East Road, Panyu District, Guangzhou City, Guangdong Province, China | ",
@@ -1507,11 +1444,9 @@ MMP9",
         "<b>All users are granted free access to the content and resources on this website.</b> ",
         "</p>",
         "</br><p style = 'text-align: center; font-size:1.0em; line-height: 10%;'> ",
-        "<a  href = 'https://github.com/aicplane/Linkage' target='_blank'>Github</a> | ",
+        "<a  href = 'https://github.com/luoyyyy/Linkage' target='_blank'>Github</a> | ",
         "<a  href = 'https://www.xulabgdpu.org.cn' target='_blank'>XuLabGDPU</a> | ",
-        "<a  href = 'https://www.xulabgdpu.org.cn/signacShiny' target='_blank'>ShinySignac.UiO</a> | ",
-        "<a  href = 'https://www.gdpu.edu.cn/' target='_blank'>Guangdong Pharmaceutical University</a> | ",
-        "<a href='https://beian.miit.gov.cn/' target='_blank'>黑ICP备2024016624</a>",
+        "<a  href = 'https://www.gdpu.edu.cn/' target='_blank'>Guangdong Pharmaceutical University</a>",
         "</p>"
       ))
     )

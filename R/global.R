@@ -19,7 +19,6 @@ library(clusterProfiler)
 library(enrichplot)
 library(plotly)
 library(wordcloud2)
-library(LinkageData)
 
 color_from_middle <- function (data, color1,color2)
 {
@@ -62,13 +61,15 @@ theme_set(ggpubr::theme_pubr() +
 homo.gene.positions <- fread("extdata/homo.gene_positions.plus.txt",header = T,sep = "\t")
 mus.gene.positions <- fread("extdata/mus.gene_positions.plus.txt",header = T,sep = "\t")
 #gene_name <- fread("gene_name.csv", header = TRUE)
-mouse.ATAC_matrix <- LinkageData::MuSCsATAC()
+source("LoadData.R")
+getwd()
+mouse.ATAC_matrix <- MuSCsATAC()
 
-ATAC_matrix <- LinkageData::BreastCancerATAC()
+ATAC_matrix <- BreastCancerATAC()
 
-RNA_matrix <- LinkageData::BreastCancerRNA()
+RNA_matrix <- BreastCancerRNA()
 # ATAC_matrix <- fread("extdata/TCGA-BRCA-ATAC.txt", header = TRUE)
-mouse.RNA_matrix <- LinkageData::MuSCsRNA()
+mouse.RNA_matrix <- MuSCsRNA()
 
 cor_test <- function(ATAC2, gene, method, Filter_col, Filter_value) {
   p <- c()
@@ -319,7 +320,6 @@ motif_analysis <- function(peakfile, select_peak,Species) {
                           genome = genome,
                           out = "positions"
   ) %>% data.frame()
-
   motif <- pwm_library_dt[motif_ix$group, ]
   motif <- cbind(motif, motif_ix)
   motif <- motif[, c(-3, -4)]
@@ -339,3 +339,24 @@ actionBttnParams <- list(
   style = "fill",
   block = TRUE
 )
+upsetplot_y<- function(x, order_by = "freq", vennpie=FALSE, vp = list(x=.6, y=.7, width=.8, height=.8)) {
+  y <- x@detailGenomicAnnotation
+  nn <- names(y)
+  y <- as.matrix(y)
+  
+  res <- tibble::tibble(anno = lapply(1:nrow(y), function(i) nn[y[i,]]))
+  g <- ggplot(res, aes_(x = ~anno)) + geom_bar() +
+    xlab(NULL) + ylab(NULL) + theme_bw() +
+    ggupset::scale_x_upset(n_intersections = 20, order_by = order_by) 
+  
+  if (!vennpie) return(g)
+  
+  f <- function() ChIPseeker::vennpie(x, cex = .9)
+  
+  p <- ggplotify::as.ggplot(f) + coord_fixed() 
+  
+  ggplotify::as.ggplot(g) +
+    ggimage::geom_subview(subview = p, x = vp$x, y = vp$y, width = vp$width, height = vp$height)
+  
+ 
+}
