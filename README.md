@@ -56,7 +56,7 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
      ```
       During the execution of the above command, the process may be interrupted due to failure in downloading certain packages. you can manually install the failed packages and then re-run "renv::restore()" to continue restoring the environment.
     
-      After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. 
+      After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
     ```bash
     ##Method 2:
     |- renv/
