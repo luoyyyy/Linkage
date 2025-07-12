@@ -1287,7 +1287,6 @@ Sox11
     # return(motif_analysis(peakfile, select_peak, Species))
     # print(nrow(motif_1))
     RNA_expr<-RNA_count()
-    print(RNA_expr[,6:ncol(RNA_expr)])
     RNA_expr$expr_avg<-rowMeans(RNA_expr[,7:ncol(RNA_expr)],na.rm = TRUE)
     RNA_exp<-data.frame(
       "external_gene_name"=RNA_expr$external_gene_name,
@@ -1589,7 +1588,7 @@ Sox11
         }
         Gene.TF.frame <- rbind(Gene.TF.frame, Gene.TF[[i]])
       }
-      write.table(Gene.TF.frame, "Gene.TF.frame.txt")
+      write.table(Gene.TF.frame, "extdata/Gene.TF.frame.txt")
       visNetworkTable(Gene.TF.frame)
       
       updateProgressBar(
