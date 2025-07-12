@@ -61,8 +61,7 @@ theme_set(ggpubr::theme_pubr() +
 homo.gene.positions <- fread("extdata/homo.gene_positions.plus.txt",header = T,sep = "\t")
 mus.gene.positions <- fread("extdata/mus.gene_positions.plus.txt",header = T,sep = "\t")
 #gene_name <- fread("gene_name.csv", header = TRUE)
-source("LoadData.R")
-getwd()
+source("extdata/LoadData.R")
 mouse.ATAC_matrix <- MuSCsATAC()
 
 ATAC_matrix <- BreastCancerATAC()
