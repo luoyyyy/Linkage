@@ -1287,7 +1287,8 @@ Sox11
     # return(motif_analysis(peakfile, select_peak, Species))
     # print(nrow(motif_1))
     RNA_expr<-RNA_count()
-    RNA_expr$expr_avg<-rowMeans(RNA_expr[,6:ncol(RNA_expr)],na.rm = TRUE)
+    print(RNA_expr[,6:ncol(RNA_expr)])
+    RNA_expr$expr_avg<-rowMeans(RNA_expr[,7:ncol(RNA_expr)],na.rm = TRUE)
     RNA_exp<-data.frame(
       "external_gene_name"=RNA_expr$external_gene_name,
       "expr_avg"=RNA_expr$expr_avg)
