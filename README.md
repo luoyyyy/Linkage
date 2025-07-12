@@ -30,6 +30,7 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
     |- ui.R
     |- server.R
     |- global.R
+    |- LoadData.R
     ```
     If all files are located in the ~/Linkage directory (e.g., your current working directory is ~/), run the following command:
       ```r
@@ -67,6 +68,7 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
     |- ui.R
     |- server.R
     |- global.R
+    |- LoadData.R
     ```
     When you are in the project directory containing the Shiny app files, you can start the app directly from the R console by running:
       ```r
