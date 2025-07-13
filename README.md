@@ -9,7 +9,7 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
 ![](man/figures/pinpeline.png) The Shiny application is additionally hosted at <https://xulabgdpu.org.cn/linkage>.
 
 
-## Insallation
+## Local Installation (Optional)
 
 ### 1. Download Linkage Source Code
   + Download Linkage from the [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).
