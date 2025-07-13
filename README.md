@@ -58,7 +58,6 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
     
       After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
     ```bash
-    ##Method 2:
     |- renv/
     |- renv.lock
     |- .Rprofile
