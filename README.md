@@ -21,7 +21,7 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
 ### 2. Install Required R Packages and Running Linkage
   + **Method 1**: Open the R environment or R GUI of your choice and run the following code to install the required R packages. ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ):
     ```r
-    install.packages(c("Seurat","shiny","shinyBS","ggplot2","clusterProfiler","BSgenome.Hsapiens.UCSC.hg38","DT"))
+    install.packages(c("shiny","shinyBS","ggplot2","clusterProfiler","BSgenome.Hsapiens.UCSC.hg38","DT"))
     ```
     After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
     ```bash
