@@ -1843,7 +1843,6 @@ Sox11
       #id has to be the same like from and to columns in edges
       nodes$id <- nodes$label
       edges <- Gene.TF.frame.filter
-      
       colnames(edges)[c(1:2)] <- c("from", "to")
       
       TF_filter_method <- input$TF_filter_method
