@@ -9,66 +9,75 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
 ![](man/figures/pinpeline.png) The Shiny application is additionally hosted at <https://xulabgdpu.org.cn/linkage>.
 
 
-## Insallation
+## Linkage Installation & Running Guide
 
-### 1. Download Linkage Source Code
-  + Download Linkage from the [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).
-
-    Or
-  + ```r
-    git clone https://github.com/luoyyyy/Linkage.git
-    ```
-### 2. Install Required R Packages and Running Linkage
-  + **Method 1**: Open the R environment or R GUI of your choice and run the following code to install the required R packages. ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ):
-    ```r
-    install.packages(c("Seurat","shiny","shinyBS","ggplot2","clusterProfiler","BSgenome.Hsapiens.UCSC.hg38","DT"))
-    ```
-    After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
-    ```bash
-    |- www/
-    |- extdata/
-    |- ui.R
-    |- server.R
-    |- global.R
-    ```
-    If all files are located in the ~/Linkage directory (e.g., your current working directory is ~/), run the following command:
-      ```r
-         shiny::runApp("Linkage")
-      ```
-    Or
-    
-  + **Method 2**: The project environment required for Linkage can be reproduced using the renv.lock, .Rprofile and activate.R files.  
-    Create a project and run the following command in the project directory:  
-
-    ```r
-      install.package("renv")
-      renv::init()
-    ```
-    After running the command, you will see the following directory   structure:
+### 1. Download Linkage Source Code  
+  You can obtain the source code in either of the following ways:
+  + Clone the GitHub repository:
       ```bash
-      |- renv/
-      |- renv.lock
-      |- .Rprofile
+        git clone https://github.com/luoyyyy/Linkage.git
       ```
-      Replace the renv.lock and .Rprofile files in your current directory with the versions provided in the GitHub repository, then run the following command to restore the project environment.
-     ```r
-      renv::restore()
-     ```
-      During the execution of the above command, the process may be interrupted due to failure in downloading certain packages. you can manually install the failed packages and then re-run "renv::restore()" to continue restoring the environment.
-    
-      After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
-    ```bash
-    ##Method 2:
-    |- renv/
-    |- renv.lock
-    |- .Rprofile
+    Or
+
+   + Download the ZIP file from : [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).
+
+   
+  
+### 2. Install Required R Packages & Run Linkage
+There are two recommended methods to install dependencies and run the Shiny app.  
++ **Method 1**: Manual Package Installation  
+1.Open your R or RStudio environment.  
+2.Install the required packages:  
+ℹ️ A complete list of packages and versions can be found in the [sessionInfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) file.
+    ```r
+    install.packages(c("shiny","shinyBS","ggplot2","BSgenome","clusterProfiler","rtracklayer"," BiocIO","XVector","wordcloud2","plotly","enrichplot","visNetwork","lubridate","forcats","stringr","purrr","readr","tidyr","tibble","tidyverse","igraph",""Gviz,"GenomicRanges","GenomeInfoDb","IRanges","S4Vectors","BiocGenerics","dplyr","ggpmisc","ggpp","data.table","shinyWidgets","shinycssloaders","shinydashboardPlus","shinydashboard","BSgenome.Hsapiens.UCSC.hg38","DT",))
+    ```  
+    3.Put the downloaded files into the corresponding folders to match the structure below:
+    ```pgsql
+    Linkage/
     |- www/
     |- extdata/
     |- ui.R
     |- server.R
     |- global.R
     ```
-    When you are in the project directory containing the Shiny app files, you can start the app directly from the R console by running:
+    4.Run the application from the Linkage directory:
+    ```r
+    shiny::runApp("Linkage")
+    ```
+    
+ + **Method 2**: Use renv to Reproduce the Project Environment     
+ 1.In your R environment, create or open a new R project in the Linkage directory.  
+ 2.Install renv and initialize the environment:
+    ```r
+   install.package("renv")
+   renv::init()
+    ```  
+    3.Replace the generated renv.lock and .Rprofile files with those provided in the GitHub repository.  
+    4.Restore the project environment: 
+    ```r
+    renv::restore()
+     ```  
+     ⚠️ If any package fails to install, you may install it manually, then re-run renv::restore().    
+    5.Ensure the following directory structure is present:
+    ```pgsql
+    Linkage/
+    ├── renv/
+    ├── renv.lock
+    ├── .Rprofile
+    ├── www/
+    ├── extdata/
+    ├── ui.R
+    ├── server.R
+    └── global.R
+    ```
+    6.Run the Shiny application:
       ```r
-        shiny::runApp(".")
+      shiny::runApp(".")
       ```
+## Authors
+Please do not hesitate to post an issue or contact the authors :
+
+Siwen Xu: siwxu@gdpu.edu.cn
+
+Yuyan Luo : 1620218029@qq.com
