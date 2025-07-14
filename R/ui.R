@@ -1434,7 +1434,7 @@ MMP9",
       HTML(paste0(
         "</br><p style = ' text-align: center;font-size:1.0em; color: black; line-height: 10%;'>",
         "<b>Created by</b>: XuLabGDPU | ",
-        "<b>Last update</b>: July 10, 2024",
+        "<b>Last update</b>: July 13, 2025",
         "</p>",
         "</br><p style = 'text-align: center; font-size:1.0em; color: black; line-height: 10%;'>",
         "<b>Address</b>: No. 280, Outer Ring East Road, Panyu District, Guangzhou City, Guangdong Province, China | ",

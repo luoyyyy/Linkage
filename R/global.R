@@ -61,7 +61,7 @@ theme_set(ggpubr::theme_pubr() +
 homo.gene.positions <- fread("extdata/homo.gene_positions.plus.txt",header = T,sep = "\t")
 mus.gene.positions <- fread("extdata/mus.gene_positions.plus.txt",header = T,sep = "\t")
 #gene_name <- fread("gene_name.csv", header = TRUE)
-source("extdata/LoadData.R")
+source("extdata/LinkageData.R")
 mouse.ATAC_matrix <- MuSCsATAC()
 
 ATAC_matrix <- BreastCancerATAC()
@@ -305,12 +305,12 @@ motif_analysis <- function(peakfile, select_peak,Species) {
   )
 
   if(Species == "1"){
-    PFMatrixList <- readRDS("extdata/PFMatrixList.rds")
-    pwm_library_dt <- readRDS("extdata/pwm_library_dt.rds")
+    PFMatrixList <- readRDS("extdata/motif/PFMatrixList.rds")
+    pwm_library_dt <- readRDS("extdata/motif/pwm_library_dt.rds")
     genome <- "hg38"
   }else{
-    PFMatrixList <- readRDS("extdata/Mus.PFMatrixList.rds")
-    pwm_library_dt <- readRDS("extdata/Mus.pwm_library_dt.rds")
+    PFMatrixList <- readRDS("extdata/motif/Mus.PFMatrixList.rds")
+    pwm_library_dt <- readRDS("extdata/motif/Mus.pwm_library_dt.rds")
     genome <- "mm10"
   }
 
@@ -328,7 +328,7 @@ motif_analysis <- function(peakfile, select_peak,Species) {
 seqLogo_plot <- function(motif, select_row) {
   select_motif <- motif[select_row, ]
   #m <- getMatrixByID(JASPAR2022, select_motif$ID)
-  m <- TFBSTools::getMatrixByID('extdata/JASPAR2022.sqlite', select_motif$ID)
+  m <- TFBSTools::getMatrixByID('extdata/motif/JASPAR2022.sqlite', select_motif$ID)
   return(TFBSTools::seqLogo(TFBSTools::toICM(m)))
 }
 

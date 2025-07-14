@@ -25,7 +25,7 @@ You can obtain the source code in either of the following ways:
   
 ### 2. Install Required R Packages & Run Linkage
 There are two recommended methods to install dependencies and run the Shiny app.  
-+ **Method 1**: Manual Package Installation  
++ **Manual Package Installation**    
 1.Open your R or RStudio environment.  
 2.Install the required packages:  
 ℹ️ A complete list of packages and versions can be found in the [sessionInfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) file.
@@ -36,7 +36,7 @@ There are two recommended methods to install dependencies and run the Shiny app.
     ```pgsql
     Linkage/
     |- www/
-    |- extdata/
+    |- data/
     |- ui.R
     |- server.R
     |- global.R
@@ -45,36 +45,7 @@ There are two recommended methods to install dependencies and run the Shiny app.
     ```r
     shiny::runApp("Linkage")
     ```
-    
- + **Method 2**: Use renv to Reproduce the Project Environment     
- 1.In your R environment, create or open a new R project in the Linkage directory.  
- 2.Install renv and initialize the environment:
-    ```r
-   install.package("renv")
-   renv::init()
-    ```  
-    3.Replace the generated renv.lock and .Rprofile files with those provided in the GitHub repository.  
-    4.Restore the project environment: 
-    ```r
-    renv::restore()
-     ```  
-     ⚠️ If any package fails to install, you may install it manually, then re-run renv::restore().    
-    5.Ensure the following directory structure is present:
-    ```pgsql
-    Linkage/
-    ├── renv/
-    ├── renv.lock
-    ├── .Rprofile
-    ├── www/
-    ├── extdata/
-    ├── ui.R
-    ├── server.R
-    └── global.R
-    ```
-    6.Run the Shiny application:
-      ```r
-      shiny::runApp(".")
-      ```
+   
 ## Authors
 Please do not hesitate to post an issue or contact the authors :
 

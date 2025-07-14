@@ -1144,9 +1144,6 @@ Sox11
       if(input$data == "1"){
         peakAnno <<- readRDS("extdata/peakAnno.rds")
       }
-      # if(input$data == "2"){
-      #   peakAnno <<- readRDS("/srv/shiny-server/linkage/extdata/mus_peakAnno.rds")
-      # }
       if(input$data == "3"|input$data == "2"){
         peakfile <-
           select_ATAC()[, c(-(ncol(select_ATAC()) - 2):-ncol(select_ATAC()))]
@@ -1469,13 +1466,13 @@ Sox11
       
       n <- 0
       if (input$Species == "1") {
-        PFMatrixList <- readRDS("extdata/PFMatrixList.rds")
-        pwm_library_dt <- readRDS("extdata/pwm_library_dt.rds")
+        PFMatrixList <- readRDS("extdata/motif/PFMatrixList.rds")
+        pwm_library_dt <- readRDS("extdata/motif/pwm_library_dt.rds")
         genome <- "hg38"
       }
       if (input$Species == "2") {
-        PFMatrixList <- readRDS("extdata/Mus.PFMatrixList.rds")
-        pwm_library_dt <- readRDS("extdata/Mus.pwm_library_dt.rds")
+        PFMatrixList <- readRDS("extdata/motif/Mus.PFMatrixList.rds")
+        pwm_library_dt <- readRDS("extdata/motif/Mus.pwm_library_dt.rds")
         genome <- "mm10"
       
       }
@@ -1846,6 +1843,7 @@ Sox11
       #id has to be the same like from and to columns in edges
       nodes$id <- nodes$label
       edges <- Gene.TF.frame.filter
+      
       colnames(edges)[c(1:2)] <- c("from", "to")
       
       TF_filter_method <- input$TF_filter_method
@@ -1893,15 +1891,19 @@ Sox11
       }
       edges$color <-
         ifelse(edges$to %in% positive.TF, "#FF8C00", "lightgreen")
-
-      network <- visNetwork(nodes, edges) %>%
-        visNodes(size = 10) %>% 
+      edges$title<-paste0(
+        "rho: ", round(edges$rho, 3), "\n",
+        "FDR: ", signif(edges$FDR, 3)
+      )
+      network <- visNetwork(nodes, edges)%>%
+        visNodes(size = 10) %>%
         visGroups(groupname = "Gene", color = "red") %>%
         visGroups(groupname = "Negative TF", color = "lightblue") %>%
         visGroups(groupname = "Positive TF", color = "lightblue") %>%
         visIgraphLayout() %>%
         visEdges(arrows = 'from') %>%
         visInteraction(
+          hoverConnectedEdges = TRUE,
           navigationButtons = TRUE,
           dragNodes = T,
           dragView = T,
@@ -1959,7 +1961,8 @@ Sox11
           input$TF_cor_method,
           input$genelist_idtype
         ),
-        object = shiny::reactive(visNetWork())
+        object = shiny::reactive(visNetWork()),
+        filter = reactive("layout,interaction,manipulation,physics")
       )
     }
   })
@@ -2149,6 +2152,10 @@ Sox11
       edges$color <-
         ifelse(edges$to %in% positive.TF, "#FF8C00", "lightgreen")
       
+      edges$title<-paste0(
+        "rho: ", round(edges$rho, 3), "\n",
+        "FDR: ", signif(edges$FDR, 3)
+      )
       network <- visNetwork(nodes, edges) %>%
         visNodes(size = 10) %>% 
         visGroups(groupname = "Gene", color = "red") %>%
@@ -2215,6 +2222,7 @@ Sox11
         network <- visNetwork(nodes, edges) %>%
           visIgraphLayout() %>%
           visInteraction(
+            hoverConnectedEdges = TRUE,
             navigationButtons = TRUE,
             dragNodes = T,
             dragView = T,
@@ -2286,7 +2294,8 @@ Sox11
           input$TF_cor_method,
           input$genelist_idtype2
         ),
-        object = shiny::reactive(upload_network())
+        object = shiny::reactive(upload_network()),
+        filter = reactive("layout,interaction,manipulation,physics")
       )
     }
   })
