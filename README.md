@@ -28,10 +28,16 @@ There are two recommended methods to install dependencies and run the Shiny app.
 + **Manual Package Installation**    
 1.Open your R or RStudio environment.  
 2.Install the required packages:  
-ℹ️ A complete list of packages and versions can be found in the [sessionInfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) file.
     ```r
-    install.packages(c("shiny","shinyBS","ggplot2","BSgenome","clusterProfiler","rtracklayer"," BiocIO","XVector","wordcloud2","plotly","enrichplot","visNetwork","lubridate","forcats","stringr","purrr","readr","tidyr","tibble","tidyverse","igraph",""Gviz,"GenomicRanges","GenomeInfoDb","IRanges","S4Vectors","BiocGenerics","dplyr","ggpmisc","ggpp","data.table","shinyWidgets","shinycssloaders","shinydashboardPlus","shinydashboard","BSgenome.Hsapiens.UCSC.hg38","DT",))
-    ```  
+    install.packages(c("shiny", "shinyBS", "ggplot2", "wordcloud2", "plotly","enrichplot", "visNetwork","lubridate", "forcats", "stringr", "purrr", "readr", "tidyr", "tibble", "tidyverse","igraph", "dplyr", "ggpmisc", "ggpp", "data.table"，"shinyjs","ggupset","ggimage","ggpubr","shinyWidgets", "shinycssloaders", "shinydashboardPlus", "shinydashboard", "DT"))  
+
+    if (!requireNamespace("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")  
+
+    BiocManager::install(c("clusterProfiler", "rtracklayer", "BiocIO", "XVector"，"BSgenome","BSgenome.Hsapiens.UCSC.hg38", "GenomicRanges", "GenomeInfoDb","IRanges"，"S4Vectors", "BiocGenerics","Gviz","ChIPseeker","motifmatchr","org.Hs.eg.db","org.Mm.eg.db","TxDb.Mmusculus.UCSC.mm10.knownGene","BSgenome.Mmusculus.UCSC.mm10"))
+    ```    
+    ℹ️ A complete list of packages and versions can be found in the [sessionInfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) file.  
+    
     3.Put the downloaded files into the corresponding folders to match the structure below:
     ```pgsql
     Linkage/
