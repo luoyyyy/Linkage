@@ -9,11 +9,42 @@ Linkage is a user-friendly, interactive, open-source R-Shiny web application for
 ![](man/figures/pinpeline.png) The Shiny application is additionally hosted at <https://xulabgdpu.org.cn/linkage>.
 
 
-## Linkage Installation & Running Guide
+## Local Installation (Optional)
 
-### 1. Download Linkage Source Code  
-  You can obtain the source code in either of the following ways:
-  + Clone the GitHub repository:
+### 1. Download Linkage Source Code
+  + Download Linkage from the [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).
+
+    Or
+  + ```r
+    git clone https://github.com/luoyyyy/Linkage.git
+    ```
+### 2. Install Required R Packages and Running Linkage
+  + **Method 1**: Open the R environment or R GUI of your choice and run the following code to install the required R packages. ( all necessary packages and their version information can be found in the [sessioninfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) ):
+    ```r
+    install.packages(c("shiny","shinyBS","ggplot2","clusterProfiler","BSgenome.Hsapiens.UCSC.hg38","DT"))
+    ```
+    After installing the required dependencies for the Linkage project, download the necessary runtime files from GitHub and place them in your project folder. The project structure should look like this:
+    ```bash
+    |- www/
+    |- extdata/
+    |- ui.R
+    |- server.R
+    |- global.R
+    ```
+    If all files are located in the ~/Linkage directory (e.g., your current working directory is ~/), run the following command:
+      ```r
+         shiny::runApp("Linkage")
+      ```
+    Or
+    
+  + **Method 2**: The project environment required for Linkage can be reproduced using the renv.lock, .Rprofile and activate.R files.  
+    Create a project and run the following command in the project directory:  
+
+    ```r
+      install.package("renv")
+      renv::init()
+    ```
+    After running the command, you will see the following directory   structure:
       ```bash
         git clone https://github.com/luoyyyy/Linkage.git
       ```
