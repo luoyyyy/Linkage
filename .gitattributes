@@ -1,3 +1,2 @@
-*.txt filter=lfs diff=lfs merge=lfs -text
 data/input_data_example/Homo/Homo.ATAC.txt filter=lfs diff=lfs merge=lfs -text
 data/input_data_example/Mus/Mus.ATAC.txt filter=lfs diff=lfs merge=lfs -text
