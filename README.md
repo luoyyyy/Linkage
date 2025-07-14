@@ -24,7 +24,6 @@ You can obtain the source code in either of the following ways:
    
   
 ### 2. Install Required R Packages & Run Linkage
-There are two recommended methods to install dependencies and run the Shiny app.  
 + **Manual Package Installation**    
 1.Open your R or RStudio environment.  
 2.Install the required packages:  
