@@ -2301,6 +2301,7 @@ Sox11
           solidHeader = F,
           status = "primary",
           collapsible = TRUE,
+          actionButton("showHelp1", "Show Network Panel Usage"),
           visNetworkEditorUI(
             id = paste0(
               "id.build",
@@ -2333,7 +2334,58 @@ Sox11
       )
     }
   })
-  
+  observeEvent(input$showHelp1, {
+    showModal(modalDialog(
+      title = "Network Panel Usage",
+      size = "l",   # large modal
+      easyClose = TRUE,
+      footer = modalButton("Close"),
+      HTML("
+        <h4>Layout</h4>
+        <p><b>hierarchical:</b> Arranges nodes in layered levels to clearly show direction or hierarchy.</p>
+
+        <h4>Interactions</h4>
+        <ul>
+          <li><b>dragNodes:</b> Allows users to drag individual nodes to reposition them manually.</li>
+           <li><b>dragView:</b> Enables users to move the entire network canvas by dragging.</li>
+      <li><b>hideEdgesOnDrag:</b> Temporarily hides edges while dragging nodes for better performance.</li>
+      <li><b>hideEdgesOnZoom:</b> Temporarily hides edges while zooming to improve rendering speed.</li>
+      <li><b>hideNodesOnDrag:</b> Temporarily hides nodes while dragging to optimize performance.</li>
+      <li><b>hover:</b> Enables hover events when the mouse moves over nodes or edges.</li>
+      <li><b>keyboard:</b> Enables keyboard navigation and control for the network.</li>
+      <li><b>multiselect:</b> Allows selection of multiple nodes by holding Ctrl or Shift.</li>
+      <li><b>navigationButtons:</b> Shows zoom and directional control buttons on the canvas.</li>
+      <li><b>selectable:</b> Allows nodes and edges to be selectable by clicking.</li>
+      <li><b>selectConnectedEdges:</b> Highlights all edges connected to a selected node.</li>
+      <li><b>hoverConnectedEdges:</b> Highlights edges connected to a node on hover.</li>
+      <li><b>tooltipDelay:</b> Sets the delay time before tooltips appear when hovering.</li>
+      </ul>
+
+        <h4>Manipulation</h4>
+        <ul>
+          <li><b>zoomView:</b> Enables zooming in/out using mouse scroll or controls.</li>
+          <li><b>zoomSpeed:</b> Controls how fast the zooming occurs with each scroll.</li>
+        </ul>
+
+        <h4>Physics</h4>
+        <ul>
+          <li><b>enabled:</b> Enables or disables the physics simulation for node positioning.</li>
+      <li><b>centralGravity:</b> Pulls all nodes toward the center of the network.</li>
+      <li><b>springLength:</b> Sets the ideal length of the edge (spring) between connected nodes.</li>
+      <li><b>springConstant:</b> Determines the strength of the spring force between connected nodes.</li>
+      <li><b>nodeDistance:</b> Defines the preferred distance between nodes not connected by an edge.</li>
+      <li><b>damping:</b> Slows down node movement over time, helping the layout to stabilize.</li>
+      <li><b>avoidOverlap:</b> Prevents nodes from overlapping by adding repulsion forces.</li>
+      <li><b>maxVelocity:</b> Sets the maximum speed a node can move during physics simulation.</li>
+      <li><b>minVelocity:</b> Sets the minimum speed threshold to stop the physics simulation.</li>
+      <li><b>solver:</b> Specifies the physics solver algorithm used for layout calculations.</li>
+      <li><b>timestep:</b> Defines the time step size for each iteration of the physics simulation.</li>
+      <li><b>wind.x:</b> Sets the horizontal force applied to nodes during simulation.</li>
+      <li><b>wind.y:</b> Sets the vertical force applied to nodes during simulation.</li>
+      </ul>
+      ")
+    ))
+  })
   # module 6 ------------------------------------------------------------------
   observeEvent(input$submit7, {
     progressSweetAlert(

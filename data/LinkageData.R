@@ -7,7 +7,7 @@
 #' library(LinkageData)
 #' BreastCancerATAC()
 BreastCancerATAC <- function(){
-  dir <- "extdata/LinkageData/Homo.ATAC"
+  dir <- "data/LinkageData/Homo.ATAC"
   txt_files <- list.files(dir,pattern = "\\.rdata$")
   path <- file.path(dir,txt_files)
   data_list <- lapply(path, function(file) {
@@ -27,7 +27,7 @@ BreastCancerATAC <- function(){
 #' library(LinkageData)
 #' MuSCsATAC()
 MuSCsATAC <- function(){
-  dir <- "extdata/LinkageData/Mus.ATAC"
+  dir <- "data/LinkageData/Mus.ATAC"
   txt_files <- list.files(dir,pattern = "\\.rdata$")
   path <- file.path(dir,txt_files)
   data_list <- lapply(path, function(file) {
@@ -47,7 +47,7 @@ MuSCsATAC <- function(){
 #' library(LinkageData)
 #' BreastCancerRNA()
 BreastCancerRNA <- function(){
-  dir <- "extdata/LinkageData/TCGA-BRCA-RNA.rdata"
+  dir <- "data/LinkageData/TCGA-BRCA-RNA.rdata"
   load(dir)
   return(RNA_matrix)
 }
@@ -62,7 +62,7 @@ BreastCancerRNA <- function(){
 #' library(LinkageData)
 #' MuSCsRNA()
 MuSCsRNA <- function(){
-  dir <- "extdata/LinkageData/mouse.normalize.rna.rdata"
+  dir <- "data/LinkageData/mouse.normalize.rna.rdata"
   load(dir)
   return(mouse.RNA_matrix)
 }
