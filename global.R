@@ -52,22 +52,22 @@ mytheme <- fresh::create_theme(
 )
 
 options(encoding = "UTF-8")
-options(shiny.maxRequestSize = 100000 * 1024 ^ 2) #### 上传文件的大小
+options(shiny.maxRequestSize = 100000 * 1024 ^ 2) 
 theme_set(ggpubr::theme_pubr() +
-            theme(legend.position = "top")) #### 设置散点图主题样式
+            theme(legend.position = "top")) 
 
 
 
-homo.gene.positions <- fread("extdata/homo.gene_positions.plus.txt",header = T,sep = "\t")
-mus.gene.positions <- fread("extdata/mus.gene_positions.plus.txt",header = T,sep = "\t")
+homo.gene.positions <- fread("data/homo.gene_positions.plus.txt",header = T,sep = "\t")
+mus.gene.positions <- fread("data/mus.gene_positions.plus.txt",header = T,sep = "\t")
 #gene_name <- fread("gene_name.csv", header = TRUE)
-source("extdata/LinkageData.R")
+source("data/LinkageData.R")
 mouse.ATAC_matrix <- MuSCsATAC()
 
 ATAC_matrix <- BreastCancerATAC()
 
 RNA_matrix <- BreastCancerRNA()
-# ATAC_matrix <- fread("extdata/TCGA-BRCA-ATAC.txt", header = TRUE)
+# ATAC_matrix <- fread("data/TCGA-BRCA-ATAC.txt", header = TRUE)
 mouse.RNA_matrix <- MuSCsRNA()
 
 cor_test <- function(ATAC2, gene, method, Filter_col, Filter_value) {
@@ -78,9 +78,9 @@ cor_test <- function(ATAC2, gene, method, Filter_col, Filter_value) {
       df <- rbind(
         gene[1, c(-1:-6)],
         ATAC2[i, c(-1:-3)]
-      ) # 构造新的数据框,gene列为用户查询的基因样本信息;peak列为初步查找到的调控序列
+      ) 
       tdf <- t(df)
-      ftdf <- data.frame(tdf) # 转置数据框
+      ftdf <- data.frame(tdf) 
       p[i] <<- tryCatch({
         if(method == "spearman"){
           p[i] <- cor.test(ftdf[, 1], ftdf[, 2], method = method,exact=FALSE)$p.value
@@ -89,8 +89,7 @@ cor_test <- function(ATAC2, gene, method, Filter_col, Filter_value) {
         }
       },
       error = function(e) {
-        # 突出显示某一区域
-        message("发生了错误: ", conditionMessage(e))
+        message("An error occurred: ", conditionMessage(e))
         p[i] <- NULL
       })
       r[i] <<- tryCatch({
@@ -101,8 +100,7 @@ cor_test <- function(ATAC2, gene, method, Filter_col, Filter_value) {
         }
       },
       error = function(e) {
-        # 突出显示某一区域
-        message("发生了错误: ", conditionMessage(e))
+        message("An error occurred: ", conditionMessage(e))
         r[i] <- NULL
       })
     })
@@ -174,7 +172,7 @@ lzh_plot <- function(gene, click_ATAT, method, Filter_col, Filter_value) {
     theme(
         plot.title = element_text(size=10),legend.position = "top")
 
-  # fig <- ggplotly(fig)
+
 
   fig <- style(fig , text = paste0("sample:",rownames(gene_cluster_data),"\n","gene:",gene_cluster_data$gene,"\n","peak:",gene_cluster_data$peak))
   return(fig)
@@ -228,14 +226,12 @@ trackplot <- function(peakfile, select_peak,Species) {
   tryCatch(
     {
       # itrack <- IdeogramTrack(genome = gen, chromosome = chr)
-      # 突出显示某一区域
       ht <- HighlightTrack(tracks_list,
                            start = peak$chromStart, width = as.numeric(peak$chromEnd - peak$chromStart), chromosome = substring(peak[, 1], 4)
       )
       return(plotTracks(list(ht, ax), type = "histogram", col = NULL))
     },
   error = function(e) {
-  # 突出显示某一区域
       ht <- HighlightTrack(tracks_list,
                            start = peak$chromStart, width = as.numeric(peak$chromEnd - peak$chromStart), chromosome = substring(peak[, 1], 4)
       )
@@ -305,12 +301,12 @@ motif_analysis <- function(peakfile, select_peak,Species) {
   )
 
   if(Species == "1"){
-    PFMatrixList <- readRDS("extdata/motif/PFMatrixList.rds")
-    pwm_library_dt <- readRDS("extdata/motif/pwm_library_dt.rds")
+    PFMatrixList <- readRDS("data/motif/PFMatrixList.rds")
+    pwm_library_dt <- readRDS("data/motif/pwm_library_dt.rds")
     genome <- "hg38"
   }else{
-    PFMatrixList <- readRDS("extdata/motif/Mus.PFMatrixList.rds")
-    pwm_library_dt <- readRDS("extdata/motif/Mus.pwm_library_dt.rds")
+    PFMatrixList <- readRDS("data/motif/Mus.PFMatrixList.rds")
+    pwm_library_dt <- readRDS("data/motif/Mus.pwm_library_dt.rds")
     genome <- "mm10"
   }
 
@@ -328,7 +324,7 @@ motif_analysis <- function(peakfile, select_peak,Species) {
 seqLogo_plot <- function(motif, select_row) {
   select_motif <- motif[select_row, ]
   #m <- getMatrixByID(JASPAR2022, select_motif$ID)
-  m <- TFBSTools::getMatrixByID('extdata/motif/JASPAR2022.sqlite', select_motif$ID)
+  m <- TFBSTools::getMatrixByID('data/motif/JASPAR2022.sqlite', select_motif$ID)
   return(TFBSTools::seqLogo(TFBSTools::toICM(m)))
 }
 

@@ -1,5 +1,5 @@
 server <- function(input, output, session) {
-  # 选择数据，动态输出文件上传控件、按钮控件 -----------------------------------
+  # select data、Dynamic Output、Upload file、Action button -----------------------------------
   shinyjs::disable(selector = ".sidebar li a[data-value='one']")
   shinyjs::disable(selector = ".sidebar li a[data-value='tow']")
   shinyjs::disable(selector = ".sidebar li a[data-value='three']")
@@ -22,10 +22,10 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$submit, {
-    Annotation_table <<- NULL  # 清空表格数据
+    Annotation_table <<- NULL  
     output$Peak_Annotation <- DT::renderDataTable({
       if (is.null(Annotation_table)) {
-        return(DT::datatable(data.frame()))  # 返回空表
+        return(DT::datatable(data.frame()))  
       } 
     })
   })
@@ -34,7 +34,6 @@ server <- function(input, output, session) {
     shinyjs::enable(selector = ".sidebar li a[data-value='tow']")
     js.2 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=tow]").css("color", "#E6E7E8");
         });
       '
@@ -45,7 +44,6 @@ server <- function(input, output, session) {
     shinyjs::enable(selector = ".sidebar li a[data-value='three']")
     js.3 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=three]").css("color", "#E6E7E8");
         });
       '
@@ -56,7 +54,6 @@ server <- function(input, output, session) {
     shinyjs::enable(selector = ".sidebar li a[data-value='four']")
     js.4 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=four]").css("color", "#E6E7E8");
         });
       '
@@ -67,7 +64,6 @@ server <- function(input, output, session) {
     shinyjs::enable(selector = ".sidebar li a[data-value='five']")
     js.5 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=five]").css("color", "#E6E7E8");
         });
       '
@@ -76,7 +72,6 @@ server <- function(input, output, session) {
     shinyjs::enable(selector = ".sidebar li a[data-value='six']")
     js.6 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=six]").css("color", "#E6E7E8");
         });
       '
@@ -206,7 +201,7 @@ server <- function(input, output, session) {
   })
   
   
-  # 动态修改默认值 -----------------------------------------------------------------
+  # Dynamically change default value -----------------------------------------------------------------
   observe({
     if (is.null(input$data)) {
       return()
@@ -386,7 +381,7 @@ Sox11
   })
   
   
-  # 跳转页面 --------------------------------------------------------------------
+  #  --------------------------------------------------------------------
   # observeEvent(input$submit, {
   #   updateTabItems(session, "inTabset", selected = "one")
   # })
@@ -411,16 +406,14 @@ Sox11
     updateTabItems(session, "inTabset", selected = "six")
   })
   
-  # 上传数据 --------------------------------------------------------------------
+  # Upload data --------------------------------------------------------------------
   read.d1 <- reactiveVal(NULL)
   
   observeEvent(input$RNA_data, {
     if (is.null(input$RNA_data)) {
-      # 如果用户没有上传文件，使用已有的数据集替换
       read.d1(existing_dataset)
       # return()
     } else {
-      # 如果用户上传了文件，读取上传的文件
       read.d1(fread(input$RNA_data$datapath))
     }
   })
@@ -429,19 +422,17 @@ Sox11
   
   observeEvent(input$ATAC_data, {
     if (is.null(input$ATAC_data)) {
-      # 如果用户没有上传文件，使用已有的数据集替换
-      read.d2(existing_dataset)
+       read.d2(existing_dataset)
       # return()
     } else {
-      # 如果用户上传了文件，读取上传的文件
-      read.d2(fread(input$ATAC_data$datapath))
+       read.d2(fread(input$ATAC_data$datapath))
     }
   })
   
   RNA_count <- reactiveVal(NULL)
   ATAC_count <- reactiveVal(NULL)
   gene_select <- reactiveVal(NULL)
-  # 数据适配 --------------------------------------------------------------------
+  # data match --------------------------------------------------------------------
   observeEvent(input$submit, {
     RNA_count(NULL)
     ATAC_count(NULL)
@@ -543,7 +534,6 @@ Sox11
       shinyjs::enable(selector = ".sidebar li a[data-value='one']")
       js.1 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=one]").css("color", "#E6E7E8");
         });
       '
@@ -552,14 +542,12 @@ Sox11
       shinyjs::enable(selector = ".sidebar li a[data-value='six']")
       js.5 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=five]").css("color", "#E6E7E8");
         });
       '
       shinyjs::runjs(js.5)
       js.6 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=six]").css("color", "#E6E7E8");
         });
       '
@@ -569,7 +557,7 @@ Sox11
   })
   
   
-  # 主页 --------------------------------------------------------
+  # Home --------------------------------------------------------
   
   observeEvent(input$data, {
     RNA_count(NULL)
@@ -726,42 +714,36 @@ Sox11
 
       js.1 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=one]").css("color", "#808080");
         });
       '
       shinyjs::runjs(js.1)
       js.2 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=tow]").css("color", "#808080");
         });
       '
       shinyjs::runjs(js.2)
       js.3 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=three]").css("color", "#808080");
         });
       '
       shinyjs::runjs(js.3)
       js.4 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=four]").css("color", "#808080");
         });
       '
       shinyjs::runjs(js.4)
       js.5 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=five]").css("color", "#808080");
         });
       '
       shinyjs::runjs(js.5)
       js.6 <- '
         $(document).ready(function(){
-          // 获取菜单2的禁用状态
             $("a[data-value=six]").css("color", "#808080");
         });
       '
@@ -771,7 +753,7 @@ Sox11
  
   
   
-  # 模块一 --------------------------------------------------------
+  # Module 1 --------------------------------------------------------
   
   output_gene <- reactive({
     if (is.null(RNA_count()))
@@ -794,7 +776,7 @@ Sox11
     }
   })
   
-  # peak筛选
+  # peak select
   select_ATAC <- reactive({
     if (is.null(ATAC_count()))
       return()
@@ -862,7 +844,7 @@ Sox11
     })
   })
   
-  # 相关性图像
+  # correlation plot
   select_plot <- reactive({
     tryCatch({
       if (input$geneid_method == "ENSEMBL") {
@@ -910,15 +892,13 @@ Sox11
       }
     },
     error = function(e) {
-      #message("有限值的观察量不够", e)
-      
-      return(NULL)
+       return(NULL)
     })
   })
   
   
   
-  # 输出筛选基因
+  # Output selected genes
   output$RNA <- DT::renderDataTable(
     output_gene()[, c(1:6)],
     colnames = c('Ensembl ID', 'Symbol ID', 'Entrez ID', 'chrom', 'chromStart', 'chromEnd'),
@@ -987,7 +967,7 @@ Sox11
     }
   })
   
-  # 输出图像
+  # Output plot
   output$displot <- renderPlotly({
     if (is.null(select_plot()))
       return()
@@ -996,13 +976,13 @@ Sox11
   
   
   
-  # 模块二 ------------------------------------------------------------------
-  # 输出peak选择数据库
+  # Module 2 ------------------------------------------------------------------
+  # Export peaks and select database
   observe({
     if (is.null(select_ATAC())) {
       output$ATAC2 <- DT::renderDataTable(NULL)
     } else{
-      # 输出筛选基因
+      # output select gene
       output$RNA2 <- DT::renderDataTable(
         output_gene()[, c(1:6)],
         colnames = c('Ensembl ID', 'Symbol ID', 'Entrez ID', 'chrom', 'chromStart', 'chromEnd'),
@@ -1058,7 +1038,7 @@ Sox11
   
   
   
-  # 轨道图
+  # Trackplot
   select_trackplot <- reactive({
     tryCatch({
       peakfile <-
@@ -1069,7 +1049,7 @@ Sox11
     })
   })
   
-  # 箱线图
+  # boxplot
   select_boxplot <- reactive({
     gene <- output_gene()
     if (input$geneid_method == "ENSEMBL") {
@@ -1096,13 +1076,13 @@ Sox11
     select_trackplot()
   })
   
-  # 输出箱线图
+  # displot
   output$displot3 <- renderPlotly({
     plotly::ggplotly(select_boxplot())
   })
   
   
-  # 模块三 ------------------------------------------------------------------
+  # module 3 ------------------------------------------------------------------
   output$RNA3 <- DT::renderDataTable(
     output_gene()[, c(1:6)],
     colnames = c('Ensembl ID', 'Symbol ID', 'Entrez ID', 'chrom', 'chromStart', 'chromEnd'),
@@ -1142,7 +1122,7 @@ Sox11
       )
       
       if(input$data == "1"){
-        peakAnno <<- readRDS("extdata/peakAnno.rds")
+        peakAnno <<- readRDS("data/peakAnno.rds")
       }
       if(input$data == "3"|input$data == "2"){
         peakfile <-
@@ -1217,7 +1197,7 @@ Sox11
   })
   
   
-  # 模块四 --------------------------------------------------------------------
+  # module 4 --------------------------------------------------------------------
   output$RNA4 <- DT::renderDataTable(
     output_gene()[, c(1:6)],
     colnames = c('Ensembl ID', 'Symbol ID', 'Entrez ID', 'chrom', 'chromStart', 'chromEnd'),
@@ -1275,7 +1255,7 @@ Sox11
   
   
   
-  # motif分析
+  # motif analysis
   select_motif <- reactive({
     peakfile <-
       select_ATAC()[, c(-(ncol(select_ATAC()) - 2):-ncol(select_ATAC()))]
@@ -1290,14 +1270,13 @@ Sox11
       "expr_avg"=RNA_expr$expr_avg)
     expr<-merge(motif_analysis(peakfile, select_peak, Species),RNA_exp,by.x = "name",by.y = "external_gene_name",all.x = TRUE)
     cols <- names(expr)
-    # 排除 name，然后把它插入到第2位
     new_order <- append(setdiff(cols, "name"), "name", after = 1)
     expr <- expr[, new_order]
     return(expr)
     
   })
   
-  # seqlogo图
+  # seqlogo plot
   select_seqlogo <- reactive({
     motif <- select_motif()
     select_row <- req(input$Motif_rows_selected)
@@ -1334,13 +1313,13 @@ Sox11
         formatStyle(names(df)[8],background=color_from_middle(brks1,'red','lightblue'))%>%
         DT::formatRound(columns = c("score", "expr_avg"), digits = 3)
       })
-  # 输出seqlogo图
+  #  output seqlogo plot
   output$displot5 <- renderPlot({
     select_seqlogo()
   })
   
   
-  # 模块五 --------------------------------------------------------------------
+  # module5 --------------------------------------------------------------------
   
   visNetworkTable <- reactiveVal(NULL)
   
@@ -1409,9 +1388,9 @@ Sox11
         r <- c()
         for (j in 1:nrow(result_peak[[i]])) {
           df <- rbind(result_peak[[i]][j, c(-1:-3)],
-                      RNA_row[, c(-1:-6)]) # 构造新的数据框
+                      RNA_row[, c(-1:-6)]) 
           tdf <- t(df)
-          ftdf <- data.frame(tdf) # 转置数据框
+          ftdf <- data.frame(tdf) 
           
           tryCatch({
             if (input$method == "1") {
@@ -1425,7 +1404,7 @@ Sox11
             }
           },
           error = function(e) {
-            # message("发生了错误: ", conditionMessage(e))
+            # message("An error occurred: ", conditionMessage(e))
             p[j] <- NULL
           })
           tryCatch({
@@ -1440,7 +1419,7 @@ Sox11
             }
           },
           error = function(e) {
-            # message("发生了错误: ", conditionMessage(e))
+            # message("An error occurred: ", conditionMessage(e))
             r[j] <- NULL
           })
         }
@@ -1466,13 +1445,13 @@ Sox11
       
       n <- 0
       if (input$Species == "1") {
-        PFMatrixList <- readRDS("extdata/motif/PFMatrixList.rds")
-        pwm_library_dt <- readRDS("extdata/motif/pwm_library_dt.rds")
+        PFMatrixList <- readRDS("data/motif/PFMatrixList.rds")
+        pwm_library_dt <- readRDS("data/motif/pwm_library_dt.rds")
         genome <- "hg38"
       }
       if (input$Species == "2") {
-        PFMatrixList <- readRDS("extdata/motif/Mus.PFMatrixList.rds")
-        pwm_library_dt <- readRDS("extdata/motif/Mus.pwm_library_dt.rds")
+        PFMatrixList <- readRDS("data/motif/Mus.PFMatrixList.rds")
+        pwm_library_dt <- readRDS("data/motif/Mus.pwm_library_dt.rds")
         genome <- "mm10"
       
       }
@@ -1514,9 +1493,9 @@ Sox11
         
         for (j in 1:nrow(tf[[i]])) {
           df <- rbind(tf[[i]][j, c(-1:-6)],
-                      RNA_row[, c(-1:-6)]) # 构造新的数据框
+                      RNA_row[, c(-1:-6)])
           tdf <- t(df)
-          ftdf <- data.frame(tdf) # 转置数据框
+          ftdf <- data.frame(tdf) 
           
           tryCatch({
             if (input$TF_cor_method == "1") {
@@ -1530,7 +1509,7 @@ Sox11
             }
           },
           error = function(e) {
-            # message("发生了错误: ", conditionMessage(e))
+            # message("An error occurred: ", conditionMessage(e))
             p[j] <- NULL
           })
           tryCatch({
@@ -1545,7 +1524,7 @@ Sox11
             }
           },
           error = function(e) {
-            # message("发生了错误: ", conditionMessage(e))
+            # message("An error occurred: ", conditionMessage(e))
             r[j] <- NULL
           })
         }
@@ -1585,7 +1564,7 @@ Sox11
         }
         Gene.TF.frame <- rbind(Gene.TF.frame, Gene.TF[[i]])
       }
-      write.table(Gene.TF.frame, "extdata/Gene.TF.frame.txt")
+      write.table(Gene.TF.frame, "data/Gene.TF.frame.txt")
       visNetworkTable(Gene.TF.frame)
       
       updateProgressBar(
@@ -1829,12 +1808,11 @@ Sox11
         distinct(gene) %>%
         dplyr::rename(label = gene)
       
-      #目的地去重
+      
       TFs <- Gene.TF.frame.filter %>%
         distinct(TF) %>%
         dplyr::rename(label = TF)
       
-      ## 合并数据并添加一列索引
       nodes <- rbind(Gene, TFs)
       nodes <- nodes %>%
         mutate(id = 1:nrow(nodes)) %>%
@@ -1936,6 +1914,7 @@ Sox11
           solidHeader = F,
           status = "primary",
           collapsible = TRUE,
+          actionButton("showHelp", "Show Network Panel Usage"),
           visNetworkEditorUI(
             id = paste0(
               "id.build",
@@ -1966,7 +1945,58 @@ Sox11
       )
     }
   })
-  
+  observeEvent(input$showHelp, {
+    showModal(modalDialog(
+      title = "Network Panel Usage",
+      size = "l",   # large modal
+      easyClose = TRUE,
+      footer = modalButton("Close"),
+      HTML("
+        <h4>Layout</h4>
+        <p><b>hierarchical:</b> Arranges nodes in layered levels to clearly show direction or hierarchy.</p>
+
+        <h4>Interactions</h4>
+        <ul>
+          <li><b>dragNodes:</b> Allows users to drag individual nodes to reposition them manually.</li>
+           <li><b>dragView:</b> Enables users to move the entire network canvas by dragging.</li>
+      <li><b>hideEdgesOnDrag:</b> Temporarily hides edges while dragging nodes for better performance.</li>
+      <li><b>hideEdgesOnZoom:</b> Temporarily hides edges while zooming to improve rendering speed.</li>
+      <li><b>hideNodesOnDrag:</b> Temporarily hides nodes while dragging to optimize performance.</li>
+      <li><b>hover:</b> Enables hover events when the mouse moves over nodes or edges.</li>
+      <li><b>keyboard:</b> Enables keyboard navigation and control for the network.</li>
+      <li><b>multiselect:</b> Allows selection of multiple nodes by holding Ctrl or Shift.</li>
+      <li><b>navigationButtons:</b> Shows zoom and directional control buttons on the canvas.</li>
+      <li><b>selectable:</b> Allows nodes and edges to be selectable by clicking.</li>
+      <li><b>selectConnectedEdges:</b> Highlights all edges connected to a selected node.</li>
+      <li><b>hoverConnectedEdges:</b> Highlights edges connected to a node on hover.</li>
+      <li><b>tooltipDelay:</b> Sets the delay time before tooltips appear when hovering.</li>
+      </ul>
+
+        <h4>Manipulation</h4>
+        <ul>
+          <li><b>zoomView:</b> Enables zooming in/out using mouse scroll or controls.</li>
+          <li><b>zoomSpeed:</b> Controls how fast the zooming occurs with each scroll.</li>
+        </ul>
+
+        <h4>Physics</h4>
+        <ul>
+          <li><b>enabled:</b> Enables or disables the physics simulation for node positioning.</li>
+      <li><b>centralGravity:</b> Pulls all nodes toward the center of the network.</li>
+      <li><b>springLength:</b> Sets the ideal length of the edge (spring) between connected nodes.</li>
+      <li><b>springConstant:</b> Determines the strength of the spring force between connected nodes.</li>
+      <li><b>nodeDistance:</b> Defines the preferred distance between nodes not connected by an edge.</li>
+      <li><b>damping:</b> Slows down node movement over time, helping the layout to stabilize.</li>
+      <li><b>avoidOverlap:</b> Prevents nodes from overlapping by adding repulsion forces.</li>
+      <li><b>maxVelocity:</b> Sets the maximum speed a node can move during physics simulation.</li>
+      <li><b>minVelocity:</b> Sets the minimum speed threshold to stop the physics simulation.</li>
+      <li><b>solver:</b> Specifies the physics solver algorithm used for layout calculations.</li>
+      <li><b>timestep:</b> Defines the time step size for each iteration of the physics simulation.</li>
+      <li><b>wind.x:</b> Sets the horizontal force applied to nodes during simulation.</li>
+      <li><b>wind.y:</b> Sets the vertical force applied to nodes during simulation.</li>
+      </ul>
+      ")
+    ))
+  })
   input_networkdata <- reactiveVal(NULL)
   observeEvent(input$Build, {
     tryCatch({
@@ -2304,7 +2334,7 @@ Sox11
     }
   })
   
-  # 模块六 ------------------------------------------------------------------
+  # module 6 ------------------------------------------------------------------
   observeEvent(input$submit7, {
     progressSweetAlert(
       session = session,
@@ -2863,7 +2893,7 @@ Sox11
       )
     })
   })
-  # 下载 --------------------------------------------------------------------
+  # download --------------------------------------------------------------------
   output$tableDown <- downloadHandler(
     filename = function() {
       paste0(output_gene()[, 1], ".", input$extTable)

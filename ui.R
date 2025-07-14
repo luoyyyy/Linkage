@@ -64,7 +64,7 @@ ui <- dashboardPage(
     # shiny::tags$head(
     #   shiny::tags$script(src="getIP.js")
     # ),
-
+    
     shiny::tags$head(
       shiny::tags$style(
         HTML(
@@ -73,33 +73,33 @@ ui <- dashboardPage(
             font-size: 13px
     }
     .skin-blue .main-sidebar .sidebar-menu > li > a[data-value='one'] {
-            color: #808080; /* 灰色 */
+            color: #808080; 
             font-size: 13px
     }
 
 
     .skin-blue .main-sidebar .sidebar-menu > li > a[data-value='tow'] {
-            color: #808080; /* 灰色 */
+            color: #808080; 
             font-size: 13px
       }
 
     .skin-blue .main-sidebar .sidebar-menu > li > a[data-value='three'] {
-            color: #808080; /* 灰色 */
+            color: #808080; 
             font-size: 13px
       }
 
     .skin-blue .main-sidebar .sidebar-menu > li > a[data-value='four'] {
-            color: #808080; /* 灰色 */
+            color: #808080;
             font-size: 13px
       }
 
     .skin-blue .main-sidebar .sidebar-menu > li > a[data-value='five'] {
-            color: #808080; /* 灰色 */
+            color: #808080; 
             font-size: 13px
     }
 
     .skin-blue .main-sidebar .sidebar-menu > li > a[data-value='six'] {
-            color: #808080; /* 灰色 */
+            color: #808080; 
             font-size: 13px
     }
 
@@ -127,7 +127,6 @@ ui <- dashboardPage(
     }
 
 
-      /*固定标题*/
     .skin-blue .main-header .logo{
         position: fixed;
         height: 50px;
@@ -141,7 +140,9 @@ ui <- dashboardPage(
     # .custom-popover .popover {
     #   width: 300px ;
     # }
-
+   
+  
+          
 
 "
         )
@@ -152,7 +153,6 @@ ui <- dashboardPage(
     shinyjs::useShinyjs(),
     fresh::use_theme(mytheme),
     shiny::tags$div(style = "height: 50px;"),
-    # <-- use the theme
     tabItems(
       # First tab content
       tabItem(
@@ -339,7 +339,7 @@ ui <- dashboardPage(
         fluidRow(
           shinydashboard::box(
             title = tagList(icon("gears"), "Search"),
-            shiny::tags$style(".popover {max-width: 500px; /* 设置弹出提示框的最大宽度 */} "),
+            shiny::tags$style(".popover {max-width: 500px; } "),
             width = 12,
             height = 230,
             solidHeader = F,
@@ -1061,7 +1061,9 @@ EDN1
           ),
           uiOutput("Gene.TF.Table")
         ),
-        fluidRow(uiOutput("visNetwork"))
+        fluidRow(
+          uiOutput("visNetwork")
+          )
       ),
       tabItem(
         tabName = "six",

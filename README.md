@@ -19,7 +19,9 @@ You can obtain the source code in either of the following ways:
     ```
     Or
 
-   + Download the ZIP file from : [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).
+   + Download the ZIP file from: [https://github.com/luoyyyy/Linkage](https://github.com/luoyyyy/Linkage).  
+   The downloaded folder should be named Linkage-main.
+
 
    
   
@@ -36,19 +38,9 @@ You can obtain the source code in either of the following ways:
     BiocManager::install(c("clusterProfiler", "rtracklayer", "BiocIO", "XVector"，"BSgenome","BSgenome.Hsapiens.UCSC.hg38", "GenomicRanges", "GenomeInfoDb","IRanges"，"S4Vectors", "BiocGenerics","Gviz","ChIPseeker","motifmatchr","org.Hs.eg.db","org.Mm.eg.db","TxDb.Mmusculus.UCSC.mm10.knownGene","BSgenome.Mmusculus.UCSC.mm10"))
     ```    
     ℹ️ A complete list of packages and versions can be found in the [sessionInfo](https://github.com/luoyyyy/Linkage/blob/main/sessionInfo) file.  
-    
-    3.Put the downloaded files into the corresponding folders to match the structure below:
-    ```pgsql
-    Linkage/
-    |- www/
-    |- data/
-    |- ui.R
-    |- server.R
-    |- global.R
-    ```
-    4.Run the application from the Linkage directory:
+    3.Run the application from the directory:
     ```r
-    shiny::runApp("Linkage")
+    shiny::runApp("/path/to/Linkage-main")
     ```
    
 ## Authors
