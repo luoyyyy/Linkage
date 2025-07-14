@@ -1843,6 +1843,7 @@ Sox11
       #id has to be the same like from and to columns in edges
       nodes$id <- nodes$label
       edges <- Gene.TF.frame.filter
+      
       colnames(edges)[c(1:2)] <- c("from", "to")
       
       TF_filter_method <- input$TF_filter_method
@@ -2163,6 +2164,7 @@ Sox11
         visIgraphLayout() %>%
         visEdges(arrows = 'from') %>%
         visInteraction(
+          hoverConnectedEdges = TRUE,
           navigationButtons = TRUE,
           dragNodes = T,
           dragView = T,
@@ -2212,7 +2214,10 @@ Sox11
         nodes$label <- as.character(nodes$label)
         nodes <- left_join(nodes, cluster_df, by = "label")
         colnames(nodes)[3] <- "group"
-        
+        edges$title<-paste0(
+          "rho: ", round(edges$rho, 3), "\n",
+          "FDR: ", signif(edges$FDR, 3)
+        )
         nodes$color <-
           ifelse(nodes$id %in% Gene.TF.frame.filter$Source,
                  "red",
@@ -2806,7 +2811,7 @@ Sox11
       })
       
       output$KEGG.upsetplot <- renderPlot({
-        upsetplot(kegg)
+        upsetplot(kegg)+ylab("Intersetion size")
       })
       
       output$KEGG.cnetplot <- renderPlot({
