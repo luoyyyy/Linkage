@@ -2341,10 +2341,10 @@ Sox11
       easyClose = TRUE,
       footer = modalButton("Close"),
       HTML("
-        <h4>Layout</h4>
+        <h4>layout</h4>
         <p><b>hierarchical:</b> Arranges nodes in layered levels to clearly show direction or hierarchy.</p>
 
-        <h4>Interactions</h4>
+        <h4>interaction</h4>
         <ul>
           <li><b>dragNodes:</b> Allows users to drag individual nodes to reposition them manually.</li>
            <li><b>dragView:</b> Enables users to move the entire network canvas by dragging.</li>
@@ -2361,13 +2361,13 @@ Sox11
       <li><b>tooltipDelay:</b> Sets the delay time before tooltips appear when hovering.</li>
       </ul>
 
-        <h4>Manipulation</h4>
+        <h4>manipulation</h4>
         <ul>
           <li><b>zoomView:</b> Enables zooming in/out using mouse scroll or controls.</li>
           <li><b>zoomSpeed:</b> Controls how fast the zooming occurs with each scroll.</li>
         </ul>
 
-        <h4>Physics</h4>
+        <h4>physics</h4>
         <ul>
           <li><b>enabled:</b> Enables or disables the physics simulation for node positioning.</li>
       <li><b>centralGravity:</b> Pulls all nodes toward the center of the network.</li>
