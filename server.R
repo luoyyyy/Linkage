@@ -114,11 +114,11 @@ server <- function(input, output, session) {
             br(),
             strong("Homo sapiens example data:"),
             a("Homo.ATAC.txt",href="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Homo/Homo.ATAC.txt",target="_blank"),"and",
-            a("TCGA-BRCA-RNA.txt",href="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Homo/TCGA-BRCA-RNA.txt",target="_blank"),
+            a("Homo.RNA.txt",href="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Homo/TCGA-BRCA-RNA.txt",target="_blank"),
             br(),
             strong("Mus musculus example data:"),
             a("Mus.ATAC.txt",href="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Mus/Mus.ATAC.txt",target="_blank"),"and",
-            a("Mouse.normalize.rna.txt",href="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Mus/mouse.normalize.rna.txt",target="_blank"),
+            a("Mus.RNA.txt",href="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Mus/mouse.normalize.rna.txt",target="_blank"),
             align = "justify"
           )
           )
