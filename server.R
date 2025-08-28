@@ -486,9 +486,9 @@ Sox11
           if (nrow(merge_df)==0) {
             sendSweetAlert(
               session = session,
-                title = "WARNING",
+                title = "WARN",
               text = "The selected species does not match the species of the current dataset. Please ensure species consistency to avoid analysis errors.",
-              type = "error"
+              type = "warn"
             )
           }
         }, error = function(e) {
@@ -939,7 +939,7 @@ Sox11
     if(!is.null(select_ATAC())&&nrow(select_ATAC())==0&&!(target_name%in%colnames(select_ATAC()))){
       sendSweetAlert(
         session = session,
-        title = "Warning",
+        title = "ERROR",
         text = "The target gene could not be found in the current ATAC-seq dataset. Please verify the gene name for accuracy, and ensure that the ATAC-seq and RNA-seq datasets are matched appropriately.",
         type = "error"
       )
@@ -1670,9 +1670,9 @@ Sox11
       print(e)
       sendSweetAlert(
         session = session,
-        title = "ERROR",
+        title = "WARN",
         text = "No highly correlated transcription factors were found for all genes!",
-        type = "error"
+        type = "warning"
       )
       visNetworkTable(NULL)
     })
@@ -1718,9 +1718,9 @@ Sox11
       if (nrow(Gene.TF.frame.filter) == 0) {
         sendSweetAlert(
           session = session,
-          title = "ERROR",
+          title = "WARN",
           text = "No highly correlated transcription factors were found for all genes!",
-          type = "error"
+          type = "warning"
         )
         return()
       }
@@ -1728,9 +1728,9 @@ Sox11
       print(e)
       sendSweetAlert(
         session = session,
-        title = "ERROR",
+        title = "WARN",
         text = "No highly correlated transcription factors were found for all genes!",
-        type = "error"
+        type = "warning"
       )
       return()
     })
@@ -1906,9 +1906,9 @@ Sox11
       print(e)
       sendSweetAlert(
         session = session,
-        title = "ERROR",
+        title = "WARN",
         text = "No highly correlated transcription factors were found for all genes!",
-        type = "error"
+        type = "warning"
       )
       return()
     })
