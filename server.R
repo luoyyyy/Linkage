@@ -111,10 +111,19 @@ server <- function(input, output, session) {
             code("Two tab-delimited text/csv input files (chromatin accessibility matrix and gene expression matrix) are required before running Linkage."),
             "The gene expression matrix file is a tab-delimited multi-column data matrix, which the first column represents gene symbols and the following columns represent normalized or raw expression levels of genes for each sample. The chromatin accessibility matrix file is a tab-delimited multi-column data matrix as well, which the first three columns represent chromosome name, start coordinate on the chromosome and end coordinate on the chromosome of the peaks respectively; the remaining columns of the chromatin accessibility matrix file represent normalized or raw chromatin accessibility levels of peaks for each sample.",
             strong("Each element of ready-to-analysis files will appear in Chromatin Accessibility Matrix panel and Gene Expression Matrix panel."),
+            br(),
+            strong("Homo sapiens example data:"),
+            a("Homo.ATAC.txt",herf="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Homo/Homo.ATAC.txt",target="_blank"),"and",
+            a("TCGA-BRCA-RNA.txt",herf="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Homo/TCGA-BRCA-RNA.txt",target="_blank"),
+            br(),
+            strong("Mus musculus example data:"),
+            a("Mus.ATAC.txt",herf="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Mus/Mus.ATAC.txt",target="_blank"),"and",
+            a("Mouse.normalize.rna.txt",herf="https://github.com/luoyyyy/Linkage/blob/main/data/input_data_example/Mus/mouse.normalize.rna.txt",target="_blank"),
             align = "justify"
           )
         )
       })
+
     }
   })
   
