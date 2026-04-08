@@ -6,7 +6,7 @@
 
 Linkage is a user-friendly, interactive, open-source R-Shiny web application for exploring and visualizing potential gene cis-regulatory elements (CREs) based on ATAC-seq and RNA-seq data. Users can upload customized data or re-analysis public datasets, then obtain genome-wide CREs with simple clicks. All the CREs are predicted from multi-omics sequencing data, rather than being experimentally determined. The main feature for Linkage is to identify potential CREs for the whole genome by performing canonical correlation analysis between each quantitative chromatin accessibility measure and the quantitative expression level across all samples. Additional modules are developed to allow users to perform more systematic and deeper analysis for the gene regulatory landscape.
 
-![](man/figures/pinpeline.png) The Shiny application is additionally hosted at <[https://xulabgdpu.org.cn/linkage](https://xulabgdpu.cpolar.top/Linkage/)>.
+![](man/figures/pinpeline.png) The Shiny application is additionally hosted at [https://xulabgdpu.org.cn/linkage](https://xulabgdpu.cpolar.top/Linkage/).
 
 
 ## Local Installation (Optional)
