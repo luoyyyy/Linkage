@@ -161,7 +161,7 @@ ui <- dashboardPage(
           shinydashboard::box(
             title = tagList(icon("window-restore"), "Overview"),
             width = 8,
-            height = 730,
+            height = 740,
             solidHeader = F,
             status = "primary",
             collapsible = TRUE,
@@ -194,7 +194,7 @@ ui <- dashboardPage(
             shinydashboard::box(
               title = tagList(icon("gears"), "Import Data"),
               width = NULL,
-              height = 730,
+              height = 740,
               solidHeader = F,
               status = "primary",
               selectInput(
@@ -1436,7 +1436,7 @@ MMP9",
       HTML(paste0(
         "</br><p style = ' text-align: center;font-size:1.0em; color: black; line-height: 10%;'>",
         "<b>Created by</b>: XuLabGDPU | ",
-        "<b>Last update</b>: July 13, 2025",
+        "<b>Last update</b>: August 28, 2025",
         "</p>",
         "</br><p style = 'text-align: center; font-size:1.0em; color: black; line-height: 10%;'>",
         "<b>Address</b>: No. 280, Outer Ring East Road, Panyu District, Guangzhou City, Guangdong Province, China | ",
